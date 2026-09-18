@@ -1,0 +1,280 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=30mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Fp}{\mathbb F_p}
+\newcommand{\chiD}{\chi_{-4}}
+
+\title{A formal-group proof of a conjecture of Z.-H. Sun for an Ap\'ery-like sequence}
+\author{Anonymous}
+\date{18 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let
+\[
+G_n=\sum_{k=0}^n4^k\binom{2n-2k}{n-k}^{2}\binom{2k}{k}.
+\]
+We prove a conjecture of Z.-H. Sun asserting a three-term congruence for
+$G_{(mp^r-1)/2}$ when $p\equiv1\pmod4$.  The main observation is that the
+formal logarithm
+\(
+\ell(v)=\sum_{n\ge0}G_nv^{2n+1}/(2n+1)
+\)
+becomes, after the integral strict change of parameter
+$v=\sqrt{\lambda(4z)}/4$, the Eichler integral of the CM newform
+$\eta(4z)^6$.  The Hecke recurrence of this form and the standard
+formal-group transfer theorem then give the conjectured congruence for every
+odd $m$, including $p\mid m$, and every $r\ge2$.
+\end{abstract}
+
+\noindent\textbf{Keywords.} Ap\'ery-like numbers; supercongruences; formal
+groups; CM modular forms; Atkin--Swinnerton-Dyer congruences.
+
+\noindent\textbf{2020 Mathematics Subject Classification.} 11B65, 11F33,
+11G20, 11A07.
+
+\section{Introduction}
+
+Z.-H. Sun introduced and studied the Ap\'ery-like sequence
+\begin{equation}\label{eq:Gdef}
+G_n=\sum_{k=0}^n4^k\binom{2n-2k}{n-k}^{2}\binom{2k}{k}.
+\end{equation}
+In Conjecture 2.7 of \cite{Sun2020}, he predicted the following all-depth
+congruence.  If $p\equiv1\pmod4$ is prime, write
+$p=x^2+4y^2$.  Then, for every positive odd integer $m$ and every $r\ge2$,
+\begin{equation}\label{eq:Sun}
+G_{(mp^r-1)/2}\equiv(4x^2-2p)G_{(mp^{r-1}-1)/2}
+-p^2G_{(mp^{r-2}-1)/2}\pmod {p^r}.
+\end{equation}
+
+Our proof identifies the formal logarithm attached to \eqref{eq:Gdef} with
+the Eichler integral of the weight-three CM form $\eta(4z)^6$.  Thus the
+coefficient $4x^2-2p$ in \eqref{eq:Sun} is not accidental: it is the
+$p$th Hecke eigenvalue of that form.  The remaining step is a strict
+coordinate transfer for one-dimensional formal groups.
+
+The argument also gives, for $p\equiv3\pmod4$, the baseline congruence
+\[
+G_{(mp^r-1)/2}\equiv p^2G_{(mp^{r-2}-1)/2}\pmod {p^r}.
+\]
+This is weaker than the modulus $p^{2r-1}$ in Sun's Conjecture 2.6 and is
+recorded only to delimit the result proved here.
+
+\section{The generating function and its modular parameter}
+
+Put $F(t)=\sum_{n\ge0}G_nt^n$.  We first give the elementary generating
+function identity needed later.
+
+\begin{lemma}\label{lem:gen}
+One has
+\begin{equation}\label{eq:gen}
+F(t)=\frac{{}_2F_1(\frac12,\frac12;1;16t)}{\sqrt{1-16t}}.
+\end{equation}
+Consequently, with the usual modular lambda function,
+\begin{equation}\label{eq:param}
+F\!\left(\frac{\lambda(\tau)}{16}\right)
+=\frac{\theta_3(\tau)^4}{\theta_4(\tau)^2}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The convolution in \eqref{eq:Gdef} gives
+\[
+F(t)=\left(\sum_{j\ge0}\binom{2j}{j}^2t^j\right)
+       \left(\sum_{k\ge0}\binom{2k}{k}(4t)^k\right).
+\]
+The two factors are respectively
+${}_2F_1(\frac12,\frac12;1;16t)$ and $(1-16t)^{-1/2}$,
+which proves \eqref{eq:gen}.  Now use the classical identities
+\[
+{}_2F_1\!\left(\tfrac12,\tfrac12;1;\lambda(\tau)\right)
+=\theta_3(\tau)^2,
+\qquad
+1-\lambda(\tau)=\frac{\theta_4(\tau)^4}{\theta_3(\tau)^4}.
+\]
+\end{proof}
+
+Define the odd formal series
+\begin{equation}\label{eq:ell}
+\ell(v)=\sum_{n\ge0}\frac{G_n}{2n+1}v^{2n+1};
+\qquad \ell'(v)=F(v^2).
+\end{equation}
+Write $q=e^{2\pi iz}$ and set
+\begin{equation}\label{eq:vq}
+v(q)=\frac{\sqrt{\lambda(4z)}}4
+=q\prod_{n\ge1}\left(\frac{1+q^{4n}}{1+q^{4n-2}}\right)^4.
+\end{equation}
+The product shows that $v(q)\in q+q^3\Z[[q^2]]$; hence it is a strict
+integral local parameter and its compositional inverse also belongs to
+$v+v^2\Z[[v]]$.
+
+\begin{proposition}\label{prop:log}
+If $\eta(4z)^6=\sum_{n\ge1}a_nq^n$, then
+\begin{equation}\label{eq:logidentity}
+\ell(v(q))=\sum_{n\ge1}\frac{a_n}{n}q^n.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The standard differential identity
+\[
+q\frac{d}{dq}\lambda(4z)
+=2\theta_3(4z)^4\lambda(4z)(1-\lambda(4z))
+\]
+and \eqref{eq:param} give
+\[
+q\frac{d}{dq}\ell(v(q))
+=\frac{\theta_3(4z)^4}{\theta_4(4z)^2},
+v(q)\theta_4(4z)^4.
+\]
+Since $v(q)=\theta_2(4z)^2/(4\theta_3(4z)^2)$ and
+$\theta_2\theta_3\theta_4=2\eta^3$, the last expression is
+$\eta(4z)^6$.  Both sides of \eqref{eq:logidentity} have zero constant
+term, so termwise integration proves the assertion.
+\end{proof}
+
+\section{The CM newform}
+
+The eta product
+\[
+f(z)=\eta(4z)^6=\sum_{n\ge1}a_nq^n
+\]
+is the normalized newform of weight $3$, level $16$, and character
+$\chiD$.  It has complex multiplication by $\Q(i)$.  Equivalently it is
+the theta series of the Hecke character of $\Q(i)$ of infinity type $2$
+and conductor $(2)$, with normalization $a_1=1$.  It follows that, for
+every odd prime $p$,
+\begin{equation}\label{eq:hecke}
+a_{pn}-a_pa_n+\chiD(p)p^2a_{n/p}=0,
+\end{equation}
+where $a_{n/p}=0$ when $p\nmid n$, and
+\begin{equation}\label{eq:ap}
+a_p=\begin{cases}
+4x^2-2p,&p=x^2+4y^2\equiv1\pmod4,\\
+0,&p\equiv3\pmod4.
+\end{cases}
+\end{equation}
+For the split case, if $\pi=x+2iy$ is chosen primary, the Hecke value is
+$\pi^2+\bar\pi^2=2(x^2-4y^2)=4x^2-2p$.
+
+\section{Formal-group transfer}
+
+We recall the coefficient form of the standard transfer theorem; see
+Li and Long \cite[Proposition 3 and Theorem 6]{LiLong}.
+
+\begin{theorem}[formal-group coefficient transfer]\label{thm:transfer}
+Let $p$ be odd and let
+\[
+L(q)=\sum_{n\ge1}\frac{a_n}{n}q^n,
+\qquad
+\ell(v)=\sum_{n\ge1}\frac{b_n}{n}v^n
+\]
+be related by $\ell(v(q))=L(q)$, where
+$v(q)\in q+q^2\Z_{(p)}[[q]]$.  Suppose
+\begin{equation}\label{eq:functional}
+L(q)-\frac{A}{p}L(q^p)+B L(q^{p^2})
+\in\Z_{(p)}[[q]].
+\end{equation}
+Then, for all positive integers $m$ and $r\ge2$,
+\begin{equation}\label{eq:transfer}
+b_{mp^r}-A b_{mp^{r-1}}+p^2B b_{mp^{r-2}}\equiv0\pmod {p^r}.
+\end{equation}
+No coprimality condition on $m$ is required.
+\end{theorem}
+
+For clarity, \eqref{eq:functional} is the functional-equation-lemma
+description of a one-dimensional formal group over $\Z_{(p)}$.  Its
+Cartier parameters are $\mu_0=A$, $\mu_1=-pB$, and
+$\mu_j=0$ for $j\ge2$.  A strict integral change of coordinate preserves
+the formal group, and the coefficient congruence in \eqref{eq:transfer}
+is precisely the resulting Cartier congruence.  This also explains why the
+modulus is $p^r$ and why $p\mid m$ is allowed.
+
+\begin{proof}[Proof of the main result]
+Take $L(q)=\sum a_nq^n/n$.  Relation \eqref{eq:hecke} implies
+\begin{equation}\label{eq:integrality}
+L(q)-\frac{a_p}{p}L(q^p)+\chiD(p)L(q^{p^2})
+\in\Z_{(p)}[[q]].
+\end{equation}
+Indeed, comparison at an exponent divisible by $p$ is exactly
+\eqref{eq:hecke}, while the remaining coefficients are $p$-integral.
+By Proposition \ref{prop:log}, Theorem \ref{thm:transfer} applies through
+the strict parameter \eqref{eq:vq} with $A=a_p$ and $B=\chiD(p)$.
+
+In \eqref{eq:ell}, the coefficient $b_N$ is zero for even $N$ and equals
+$G_{(N-1)/2}$ for odd $N$.  If $p\equiv1\pmod4$, then
+$\chiD(p)=1$ and \eqref{eq:ap} gives $a_p=4x^2-2p$.  Substitution in
+\eqref{eq:transfer}, for odd $m$, is exactly \eqref{eq:Sun}.
+\end{proof}
+
+\begin{remark}
+For $p\equiv3\pmod4$, the same proof gives
+\[
+G_{(mp^r-1)/2}\equiv p^2G_{(mp^{r-2}-1)/2}\pmod {p^r},
+\]
+because $a_p=0$ and $\chiD(p)=-1$.  The sign is positive after moving the
+last term in \eqref{eq:transfer} to the other side.
+\end{remark}
+
+\section*{Computational verification}
+
+Exact rational power-series calculations were used only as diagnostics.
+The accompanying program verifies through $q^{99}$ that the parameter
+\eqref{eq:vq} is integral and odd and that
+$q\,d\ell(v(q))/dq=\eta(4z)^6$.  It also checks \eqref{eq:ap} for every
+odd prime below $100$.  None of these finite checks replaces a step of the
+proof.
+
+\section*{Use of generative artificial intelligence}
+
+OpenAI Codex was used as the principal mathematical research tool in this
+work.  All proof strategies and mathematical arguments establishing the
+main result were generated by Codex.  It was also used for symbolic and
+numerical checks, literature searches, and manuscript preparation.  The
+human project director selected the problem and supervised the project.
+Before journal submission, the named author will verify every argument,
+computation, and citation and will assume full responsibility for the
+contents.  The AI system is not an author.
+
+\section*{Declarations}
+
+\noindent\textbf{Funding.} No funding was received for this work.
+
+\noindent\textbf{Competing interests.} The author declares no competing
+interests.
+
+\noindent\textbf{Data availability.} The exact verification program is
+included with the public proof-candidate packet.
+
+\begin{thebibliography}{9}
+
+\bibitem{LiLong}
+W.-C. W. Li and L. Long,
+Atkin and Swinnerton-Dyer congruences and noncongruence modular forms,
+\emph{RIMS K\^oky\^uroku Bessatsu} \textbf{B51} (2014), 269--299;
+\url{https://arxiv.org/abs/1303.6228}.
+
+\bibitem{Sun2020}
+Z.-H. Sun,
+New congruences involving Ap\'ery-like numbers,
+preprint, arXiv:2004.07172v2 (2020),
+\url{https://arxiv.org/abs/2004.07172}.
+
+\end{thebibliography}
+
+\end{document}
