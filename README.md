@@ -19,6 +19,10 @@ check passes.  A targeted literature search through 18 September 2026 did
 not locate an earlier proof of the exact conjecture; that is not an exhaustive
 guarantee of novelty.
 
+Version 0.2 adds a checkout-safe line-ending policy and a regenerated
+manifest. It corrects the v0.1 packaging defect described in
+`ERRATA-V0.1.md` without changing the scientific files.
+
 ## Contents
 
 - `paper/main.pdf`: content-anonymous manuscript.
