@@ -19,9 +19,11 @@ check passes.  A targeted literature search through 18 September 2026 did
 not locate an earlier proof of the exact conjecture; that is not an exhaustive
 guarantee of novelty.
 
-Version 0.2 adds a checkout-safe line-ending policy and a regenerated
-manifest. It corrects the v0.1 packaging defect described in
-`ERRATA-V0.1.md` without changing the scientific files.
+Version 0.3, dated 20 September 2026, recasts the main congruence as a
+numbered theorem, explains the generating-function--formal-group--Hecke
+mechanism before technical details, and corrects the displayed chain-rule
+factorization in the proof of the modular parametrization.  The theorem and
+underlying argument are unchanged.
 
 ## Contents
 
@@ -34,11 +36,7 @@ manifest. It corrects the v0.1 packaging defect described in
 
 ## AI-use disclosure
 
-OpenAI Codex served as the principal mathematical research tool.  All new
-proof strategies and mathematical arguments in the manuscript were generated
-by Codex.  It was also used for exact checks, literature triage, and drafting.
-The future named author must independently verify the submission and accepts
-full responsibility for it.  The AI system is not an author.
+The proof presented in this article was found by OpenAI Codex.
 
 ## Non-claims
 
