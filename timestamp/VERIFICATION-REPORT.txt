@@ -1,0 +1,34 @@
+RFC 3161 VERIFICATION REPORT
+
+Release: Conjecture 2.7 proof candidate v0.3
+Timestamped input: RELEASE-MANIFEST.sha256.asc
+OpenPGP signing-key fingerprint:
+  05C9E0E6F37D5326904619A8AE21C3B33BF9DFC7
+TSA URL: http://timestamp.digicert.com
+TSA policy OID: 2.16.840.1.114412.7.1
+TSA serial: 0x4B17E3C318828088A1DE1FFB48F47CE7
+RFC 3161 time: 2026-09-21 05:30:36 UTC
+Hash algorithm: SHA-256
+Status: Granted
+
+SHA-256 hashes:
+  a9dff206390dca2614f8f99ee2cdb55451eabc7460eb0a1863c56a67dcfd92d1  RELEASE-MANIFEST.sha256
+  4b5d39a8a1955b1c73249c7427df08bcf78674c3faa9b51218a925c2cb9a1716  RELEASE-MANIFEST.sha256.asc
+  e63cd9bdfe2e8b03c69feea863ac7ba31841fb1504605bc7da2648d38a1181b4  RELEASE-MANIFEST.sha256.asc.tsq
+  7f2470e6f2c16d31e8fb6a1e14410cd0bb206d6ba6e075e07f139c49b1a394cd  RELEASE-MANIFEST.sha256.asc.tsr
+  a4760dce3e78bae7ed146729f2f02d1fae9219d00d38d81bd4f72e789e640636  RELEASE-MANIFEST.sha256.asc.p7s
+
+The response message imprint is
+4b5d39a8a1955b1c73249c7427df08bcf78674c3faa9b51218a925c2cb9a1716,
+which equals SHA-256(RELEASE-MANIFEST.sha256.asc).
+
+Detached OpenPGP signature verification: Good signature.
+RFC 3161 query/response verification: Verification: OK.
+Certificate-chain verification used the Git for Windows CA bundle.  The
+embedded chain identifies DigiCert SHA256 RSA4096 Timestamp Responder 2026 1,
+DigiCert Trusted G4 TimeStamping RSA4096 SHA256 2025 CA1, and DigiCert Trusted
+Root G4.
+
+This evidence proves that the timestamp authority saw the signed manifest
+imprint no later than the stated UTC time.  It does not prove authorship,
+correctness, novelty, acceptance, or peer review.
